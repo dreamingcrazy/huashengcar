@@ -7,10 +7,10 @@ class UserInfo(AbstractUser):
     is_delete = models.IntegerField(default=0)
     def __str__(self):
         return self.username
-class Meta:
-    db_table = 'userinfo'
-    verbose_name = '用户信息'
-    verbose_name_plural = verbose_name
+    class Meta:
+        db_table = 'userinfo'
+        verbose_name = '用户信息'
+        verbose_name_plural = verbose_name
 class UserAddress(models.Model):
     user = models.ForeignKey('UserInfo',null=False,verbose_name='所属的用户')
     recv = models.CharField( max_length=10,null=False,verbose_name='收货人' ,unique=True,
