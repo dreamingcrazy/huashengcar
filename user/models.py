@@ -29,4 +29,7 @@ class UserAddress(models.Model):
     service_phone = models.IntegerField(verbose_name='客服电话'),
     add = models.CharField(max_length=50,verbose_name='收货人地址')
     is_delete = models.BooleanField(default=0,null=False,verbose_name='是否删除')
+    class Meta:
+        verbose_name = '用户地址'
+        verbose_name_plural = verbose_name
 # Create your models here.
