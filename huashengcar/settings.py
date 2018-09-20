@@ -13,15 +13,16 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import sys
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '+ti%ify1umhz^=g^2zu$3kye4l@#zec4nh0ukfxz%(@$6y!jd&'
+SECRET_KEY = 'fkku7vj#x(o@ilr_u(jzh20q@lyi522%!0)qpg0_p0e2^xw49&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,9 +39,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user',
-    'second_car',
-    'trade'
+
+    'apps.trade',
+    'apps.user',
+    'apps.second_car',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,7 +61,7 @@ ROOT_URLCONF = 'huashengcar.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'apps/../templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -108,5 +110,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIR = [os.path.join(BASE_DIR,'static')]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static')
+]
 AUTH_USER_MODEL = 'user.UserInfo'
+
+# 邮箱验证配置
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = False
+EMAIL_HOST = 'smtp.qq.com'
+# 端口
+EMAIL_PORT = 25
+# 发送邮箱
+EMAIL_HOST_USER = '1632606312@qq.com'
+# 授权码
+EMAIL_HOST_PASSWORD = 'olxaneugcowabaec'
+DEFAULT_FROM_EMAIL = '花生二手车<1632606312@qq.com>'
